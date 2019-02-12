@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mysql
+    container_name: server-mysql
+    environment:
+      - MYSQL_USER=moodleuser
+      - MYSQL_PASSWORD=moodle
+      - MYSQL_DATABASE=moodle
+      - MYSQL_ROOT_PASSWORD=asdasd
+    volumes:
+      - /opt/mysql:/var/lib/mysql
+
+  php-apache:
+    image: naxilde/moodle:v1
+    container_name: moodle
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - mysql
+    environment:
+      - MYSQL_ENV_MYSQL_USER=moodleuser
+      - MYSQL_ENV_MYSQL_PASSWORD=moodle
+      - MYSQL_ENV_MYSQL_DATABASE=moodle
+    volumes:
+      - /var/moodleapp-data:/var/moodledata
+    depends_on:
+      - mysql
