@@ -38,12 +38,12 @@ $CFG = new stdClass();
 // will be stored.  This database must already have been created         //
 // and a username/password created to access it.                         //
 
-$CFG->dbtype    = 'mysqli';      // 'pgsql', 'mariadb', 'mysqli', 'sqlsrv' or 'oci'
+$CFG->dbtype    = 'mariadb';      // 'pgsql', 'mariadb', 'mysqli', 'sqlsrv' or 'oci'
 $CFG->dblibrary = 'native';     // 'native' only at the moment
 $CFG->dbhost    = 'server-mysql';  // eg 'localhost' or 'db.isp.com' or IP
-$CFG->dbname    = getenv('MYSQL_ENV_MYSQL_DATABASE');     // database name, eg moodle
-$CFG->dbuser    = getenv('MYSQL_ENV_MYSQL_USER');   // your database username
-$CFG->dbpass    = getenv('MYSQL_ENV_MYSQL_PASSWORD');   // your database password
+$CFG->dbname    = 'moodle';     // database name, eg moodle
+$CFG->dbuser    = 'moodleuser';   // your database username
+$CFG->dbpass    = 'moodle';   // your database password
 $CFG->prefix    = 'mdl_';       // prefix to use for all table names
 $CFG->dboptions = array(
     'dbpersist' => false,       // should persistent database connections be
@@ -93,7 +93,7 @@ $CFG->dboptions = array(
 // If you need both intranet and Internet access please read
 // http://docs.moodle.org/en/masquerading
 
-$CFG->wwwroot   = 'http://www.moodle-daniel.org';
+$CFG->wwwroot   = 'http://192.168.0.103';
 
 
 //=========================================================================
@@ -123,7 +123,7 @@ $CFG->dataroot  = '/var/moodledata';
 // to make sure the web server process (eg Apache) can access the files.
 // NOTE: the prefixed 0 is important, and don't use quotes.
 
-$CFG->directorypermissions = 02777;
+$CFG->directorypermissions = 0750;
 
 
 //=========================================================================
